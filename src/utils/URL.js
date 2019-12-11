@@ -1,5 +1,5 @@
 // url
-export default "https://react-vintage-tech-storet-api.herokuapp.com/products";
+export default "https://svelte-store-project-server.herokuapp.com/products";
 
 // "https://svelte-store-project-server.herokuapp.com/products";
 
