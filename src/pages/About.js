@@ -1,6 +1,15 @@
-import React from "react";
+import React from 'react';
 
 const About = () => {
+  const [height, setHeight] = React.useState(0);
+  console.log(height);
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setHeight(window.pageYOffset);
+    });
+    return window.removeEventListener('scroll', () => {});
+  });
   return (
     <section className="section about-section">
       <h1 className="section-title">about us</h1>

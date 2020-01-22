@@ -1,33 +1,41 @@
 // user context
-import React from "react";
+import React from 'react';
 
 const UserContext = React.createContext();
 
 function getUserFromLocalStorage() {
-  return localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
+  return localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
     : { username: null, token: null };
 }
 
 function UserProvider({ children }) {
   // const [user, setUser] = React.useState({ uresname: null, token: null });
   const [user, setUser] = React.useState(getUserFromLocalStorage());
+  const [height, setHeight] = React.useState(0);
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setHeight(window.pageYOffset);
+    });
+    return window.removeEventListener('scroll', () => {});
+  });
 
   const userLogin = user => {
     setUser(user);
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
   };
 
   const userLogout = () => {
     setUser({ username: null, token: null });
-    localStorage.removeItem("user");
+    localStorage.removeItem('user');
   };
   const [alert, setAlert] = React.useState({
     show: false,
-    msg: "",
-    type: "success"
+    msg: '',
+    type: 'success'
   });
-  const showAlert = ({ msg, type = "success" }) => {
+  const showAlert = ({ msg, type = 'success' }) => {
     setAlert({ show: true, msg, type });
   };
   const hideAlert = () => {
@@ -35,7 +43,15 @@ function UserProvider({ children }) {
   };
   return (
     <UserContext.Provider
-      value={{ user, userLogin, userLogout, alert, showAlert, hideAlert }}
+      value={{
+        user,
+        userLogin,
+        userLogout,
+        alert,
+        showAlert,
+        hideAlert,
+        height
+      }}
     >
       {children}
     </UserContext.Provider>

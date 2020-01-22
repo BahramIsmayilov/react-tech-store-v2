@@ -11,6 +11,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const history = useHistory();
   const product = products.find(item => item.id === parseInt(id));
+  console.log(history);
 
   if (products.length === 0) {
     return <Loading />;

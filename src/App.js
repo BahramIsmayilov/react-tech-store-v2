@@ -1,25 +1,27 @@
-import React from "react";
+import React from 'react';
 // react-router-dom
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // pages
-import About from "./pages/About";
-import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
-import Error from "./pages/Error";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import ProductDetails from "./pages/ProductDetails";
-import Products from "./pages/Products";
+import About from './pages/About';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import Error from './pages/Error';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import ProductDetails from './pages/ProductDetails';
+import Products from './pages/Products';
 //components
-import Header from "./components/Header";
-import Alert from "./components/Alert";
-import PrivateRoute from "./components/PrivateRoute";
+import Header from './components/Header';
+import Alert from './components/Alert';
+import PrivateRoute from './components/PrivateRoute';
+import ScrollButton from './components/ScrellButton';
 
 const App = () => {
   return (
     <Router>
       <Header />
       <Alert />
+      <ScrollButton />
       <Switch>
         <Route exact path="/">
           <Home />
